@@ -7,7 +7,7 @@
 
 namespace event {
 
-class Notifier : public types::Singleton<Notifier> {
+class Notifier : public sb::types::Singleton<Notifier> {
  public:
   template <typename L, typename T>
   auto AddListener(T* listener) -> Notifier& {
