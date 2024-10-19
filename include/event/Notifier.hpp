@@ -3,34 +3,23 @@
 #include <typeinfo>
 
 #include "Listener.hpp"
-#include "types/Singleton.hpp"
+namespace sb::event {
 
-namespace event {
+template <typename L, typename T>
+auto AddListener(T* listener) -> void {
+  auto& list = Listener<T>::notify_list();
+  list.insert({typeid(L).hash_code(), listener});
+}
 
-class Notifier : public sb::types::Singleton<Notifier> {
- public:
-  template <typename L, typename T>
-  auto AddListener(T* listener) -> Notifier& {
-    auto& list = Listener<T>::notify_list();
-    list.insert({typeid(L).hash_code(), listener});
+template <typename L, typename T>
+auto RemoveListener(T* listener) -> void {
+  auto& list = Listener<T>::notify_list();
+  list.erase(typeid(L).hash_code());
+}
 
-    return *this;
-  }
-
-  template <typename L, typename T>
-  auto RemoveListener(T* listener) -> Notifier& {
-    auto& list = Listener<T>::notify_list();
-    list.erase(typeid(L).hash_code());
-
-    return *this;
-  }
-
-  template <typename T, typename... Args>
-    requires std::invocable<T, Args...>
-  auto Notify(Args... args) -> Notifier& {
-    Listener<T>::Notify(args...);
-
-    return *this;
-  }
-};
-}  // namespace event
+template <typename T, typename... Args>
+  requires std::invocable<T, Args...>
+auto Notify(Args... args) -> void {
+  Listener<T>::Notify(args...);
+}
+}  // namespace sb::event
