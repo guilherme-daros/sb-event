@@ -1,6 +1,6 @@
-[submodule "extern/antimony-types"]
-	path = extern/antimony-types
-	url = /home/geagaa/workspace/playground/antimony-types
-[submodule "extern/antimony-logger"]
-	path = extern/antimony-logger
-	url = /home/geagaa/workspace/playground/antimony-logger
+[submodule "extern/sb-types"]
+	path = extern/sb-types
+	url = git@github.com:guilherme-daros/sb-types.git
+[submodule "extern/sb-logger"]
+	path = extern/sb-logger
+	url = git@github.com:guilherme-daros/sb-logger.git

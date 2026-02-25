@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # 1. Dependencies (Submodules)
 if(NOT TARGET sb::types)
-    add_subdirectory(extern/antimony-types)
+    add_subdirectory(extern/sb-types)
 endif()
 if(NOT TARGET sb::logger)
-    add_subdirectory(extern/antimony-logger)
+    add_subdirectory(extern/sb-logger)
 endif()
 
 # 2. Define the library
