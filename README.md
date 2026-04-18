@@ -12,11 +12,11 @@ A decoupled event notification system and POSIX signal management bridge.
   - Safe signal handling using a pipe-to-thread bridge to avoid async-signal-safety issues.
 
 ## Dependencies
-- `antimony-types`
-- `antimony-logger`
+- `sb-types`
+- `sb-logger`
 
 ## Usage (CMake)
 ```cmake
-add_subdirectory(extern/antimony-event-sys)
+add_subdirectory(extern/sb-event)
 target_link_libraries(YourTarget PRIVATE sb::event sb::system)
 ```
